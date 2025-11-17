@@ -1,0 +1,63 @@
+Here you go — the simplest possible Flask app, clean and beginner-friendly.
+Short, sweet, and won’t behave like a server stuck in an infinite loop 😄
+
+
+---
+
+🐍 app.py (Simple Flask App)
+
+from flask import Flask
+
+app = Flask(__name__)
+
+@app.get("/")
+def home():
+    return "Hello from Flask!"
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000)
+
+
+---
+
+Dockerfile (No requirements.txt)
+
+This installs Flask directly inside the image.
+
+FROM python:3.10-slim
+
+WORKDIR /app
+
+COPY . .
+
+RUN pip install flask
+
+CMD ["python", "app.py"]
+
+
+---
+
+Run Steps
+
+Build:
+
+docker build -t flask-app .
+
+Run:
+
+docker run -p 5000:5000 flask-app
+
+Open in browser:
+
+http://localhost:5000
+
+
+---
+
+If you want: 🔥 A POST API
+🔥 A JSON response version
+🔥 A multi-route app
+🔥 A production-ready version with Gunicorn
+
+Just say the word, Maravarman 😄
+
